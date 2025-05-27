@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Natã de Oliveira Araújo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: {
+                            900: '#121212',
+                            800: '#1A1A1A',
+                            700: '#222222',
+                            600: '#2A2A2A',
+                            500: '#333333',
+                        },
+                        light: {
+                            100: '#FFFFFF',
+                            200: '#E0E0E0',
+                            300: '#CCCCCC',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3B82F6, #10B981);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #2A2A2A;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            transition: width 1s ease-in-out;
+        }
+        
+        .floating-action-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #10B981);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            z-index: 40;
+        }
+        
+        .floating-action-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #3B82F6, #10B981);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #10B981);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #222222;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #555555;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777777;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #1A1A1A;
+                transition: right 0.3s ease;
+                z-index: 100;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .timeline-item:before {
+                left: 1.25rem;
+            }
+            
+            .timeline-dot {
+                left: 0.75rem;
+            }
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden fixed top-4 right-4 z-50">
+        <button id="mobileMenuButton" class="mobile-menu-button p-3 rounded-full bg-dark-700 text-white shadow-lg hover:bg-dark-600 transition-colors">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="nav-menu md:hidden">
+        <div class="flex justify-end mb-8">
+            <button id="closeMobileMenu" class="p-2 rounded-full bg-dark-600 text-white hover:bg-dark-500 transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <a href="#hero" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Início</a>
+            <a href="#objetivo" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Objetivo</a>
+            <a href="#resumo" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Resumo</a>
+            <a href="#formação" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Formação</a>
+            <a href="#experiência" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Experiência</a>
+            <a href="#habilidades" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Habilidades</a>
+            <a href="#contato" class="nav-link text-xl font-medium text-white py-2 px-4 rounded-lg hover:bg-dark-600 transition-colors">Contato</a>
+        </div>
+    </div>
+    
+    <!-- Floating Action Button -->
+    <a href="#contato" class="floating-action-button animate-float">
+        <i class="fas fa-paper-plane text-2xl"></i>
+    </a>
+    
+    <!-- Header -->
+    <header class="bg-dark-900 shadow-lg sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 hidden md:flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-white flex items-center">
+                <span class="gradient-text">Natã Araújo</span>
+            </a>
+            <div class="flex space-x-1">
+                <a href="#objetivo" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Objetivo</a>
+                <a href="#resumo" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Resumo</a>
+                <a href="#formacao" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Formação</a>
+                <a href="#experiencia" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Experiência</a>
+                <a href="#habilidades" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Habilidades</a>
+                <a href="#contato" class="nav-link px-4 py-2 rounded-lg text-light-200 hover:text-white transition-colors">Contato</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mx-auto px-4 md:px-6 py-4">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center py-16 animate-fade-in">
+            <div class="text-center max-w-4xl mx-auto px-4">
+                <div class="relative inline-block mb-8">
+                    <img 
+                        src="image.png" 
+                        alt="Foto de Perfil de Natã de Oliveira Araújo" 
+                        class="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-dark-700 shadow-xl mb-6 animate-float"
+                        onerror="this.onerror=null;this.src='https://placehold.co/224x224/1A1A1A/E0E0E0?text=N';"
+                    />
+                    <div class="absolute -bottom-3 -right-3 bg-gradient-to-r from-primary to-secondary rounded-full p-2 shadow-lg">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+                    Natã de Oliveira <span class="gradient-text">Araújo</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-light-300 mb-8 max-w-2xl mx-auto">
+                    Estudante de Direito dedicado, buscando aplicar e expandir conhecimentos na prática jurídica.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contato" class="px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition-opacity shadow-lg flex items-center justify-center">
+                        <i class="fas fa-envelope mr-2"></i> Contato
+                    </a>
+                    <a href="#habilidades" class="px-6 py-3 bg-dark-700 text-white rounded-lg font-medium hover:bg-dark-600 transition-colors shadow-lg flex items-center justify-center">
+                        <i class="fas fa-star mr-2"></i> Habilidades
+                    </a>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Objective Section -->
+        <section id="objetivo" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-bullseye text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Objetivo Profissional</h2>
+                </div>
+                <p class="text-lg md:text-xl leading-relaxed text-light-300">
+                    Contribuir com dedicação e aprimorar habilidades em estágio jurídico, buscando experiência prática e imersão na rotina do Direito. 
+                    Almejo aplicar meus conhecimentos teóricos em um ambiente profissional desafiador, enquanto continuo meu desenvolvimento acadêmico 
+                    e pessoal na área jurídica.
+                </p>
+            </div>
+        </section>
+                
+        <!-- Summary Section -->
+        <section id="resumo" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-user-tie text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Resumo Profissional</h2>
+                </div>
+                <p class="text-lg md:text-xl leading-relaxed text-light-300 mb-6">
+                    Estudante de Direito com sólida base acadêmica, buscando aprimoramento contínuo e proficiência nas esferas cível e penal. 
+                    Possuo habilidade comprovada na elaboração de petições iniciais cíveis, desenvolvida por meio de estudos aprofundados, 
+                    práticas e simulações.
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-light-300">
+                    Minha abordagem combina rigor acadêmico com curiosidade intelectual, sempre buscando compreender os princípios fundamentais 
+                    por trás das normas jurídicas. Tenho especial interesse na aplicação prática do Direito e na resolução criativa de problemas 
+                    jurídicos complexos.
+                </p>
+            </div>
+        </section>
+                
+        <!-- Education Section -->
+        <section id="formacao" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Formação Acadêmica</h2>
+                </div>
+                                
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-university text-xs"></i>
+                    </div>
+                    <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                        <h3 class="text-xl font-bold text-white mb-2">Bacharelado em Direito</h3>
+                        <p class="text-light-300 mb-2">Faculdade Anhanguera de Parauapebas</p>
+                        <div class="flex items-center text-light-400">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Em andamento</span>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-school text-xs"></i>
+                    </div>
+                    <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                        <h3 class="text-xl font-bold text-white mb-2">Ensino Médio Completo</h3>
+                        <div class="flex items-center text-light-400">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Concluído</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Experience Section -->
+        <section id="experiencia" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-briefcase text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Experiência Prática</h2>
+                </div>
+                                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3">
+                                <i class="fas fa-file-contract text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Elaboração de Petições</h3>
+                        </div>
+                        <p class="text-light-300">
+                            Habilidade comprovada na elaboração e estruturação de petições iniciais cíveis, consolidada por prática pessoal intensiva, 
+                            estudos aprofundados de legislação e jurisprudência, e simulações acadêmicas.
+                        </p>
+                    </div>
+                                        
+                    <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-3">
+                                <i class="fas fa-search text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Pesquisa Jurídica</h3>
+                        </div>
+                        <p class="text-light-300">
+                            Experiência em pesquisa jurídica abrangente utilizando bases de dados, doutrina, legislação e jurisprudência para 
+                            embasar análises e documentos jurídicos com fundamentação sólida.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Skills Section -->
+        <section id="habilidades" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-star text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Habilidades</h2>
+                </div>
+                                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <i class="fas fa-cogs mr-3 text-primary"></i>
+                            Habilidades Técnicas
+                        </h3>
+                                                
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-light-200">Elaboração de Petições</span>
+                                    <span class="text-light-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                                                        
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-light-200">Pesquisa Jurídica</span>
+                                    <span class="text-light-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                                                        
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-light-200">Sistemas Processuais Eletrônicos</span>
+                                    <span class="text-light-400">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <i class="fas fa-users mr-3 text-secondary"></i>
+                            Habilidades Interpessoais
+                        </h3>
+                                                
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3">
+                                    <i class="fas fa-comments text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-light-200">Comunicação Efetiva</h4>
+                                    <p class="text-light-400 text-sm">
+                                        Habilidade para transmitir informações de maneira clara, concisa e persuasiva, tanto na comunicação escrita quanto verbal.
+                                    </p>
+                                </div>
+                            </div>
+                                                        
+                            <div class="flex items-start">
+                                <div class="bg-secondary bg-opacity-20 p-2 rounded-lg mr-3">
+                                    <i class="fas fa-users-cog text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-light-200">Trabalho em Equipe</h4>
+                                    <p class="text-light-400 text-sm">
+                                        Facilidade em colaborar com colegas e profissionais de diferentes áreas, contribuindo para um ambiente de trabalho construtivo.
+                                    </p>
+                                </div>
+                            </div>
+                                                        
+                            <div class="flex items-start">
+                                <div class="bg-purple-500 bg-opacity-20 p-2 rounded-lg mr-3">
+                                    <i class="fas fa-tasks text-purple-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-light-200">Organização</h4>
+                                    <p class="text-light-400 text-sm">
+                                        Habilidade em gerenciar tarefas e prioridades eficientemente, assegurando a conclusão de atividades dentro dos prazos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Contact Section -->
+        <section id="contato" class="py-12 md:py-16">
+            <div class="bg-dark-800 rounded-xl p-8 md:p-10 shadow-xl card-hover">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-envelope text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Contato</h2>
+                </div>
+                                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                            <h3 class="text-xl font-bold text-white mb-6">Informações de Contato</h3>
+                                                        
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-dark-600 flex items-center justify-center mr-4">
+                                        <i class="fas fa-user text-primary"></i>
+                                    </div>
+                                    <span class="text-light-200">Natã de Oliveira Araújo</span>
+                                </div>
+                                                                
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-dark-600 flex items-center justify-center mr-4">
+                                        <i class="fas fa-phone text-primary"></i>
+                                    </div>
+                                    <a href="tel:+5598989143950" class="text-light-200 hover:text-primary transition-colors">(98) 98914-3950</a>
+                                </div>
+                                                                
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-dark-600 flex items-center justify-center mr-4">
+                                        <i class="fas fa-envelope text-primary"></i>
+                                    </div>
+                                    <a href="mailto:natanaraujoadv@outlook.com" class="text-light-200 hover:text-primary transition-colors">natanaraujoadv@outlook.com</a>
+                                </div>
+                                                                
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-dark-600 flex items-center justify-center mr-4">
+                                        <i class="fas fa-map-marker-alt text-primary"></i>
+                                    </div>
+                                    <span class="text-light-200">Canaã dos Carajás – PA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <div>
+                        <div class="bg-dark-700 rounded-lg p-6 shadow-lg card-hover">
+                            <h3 class="text-xl font-bold text-white mb-6">Redes Sociais</h3>
+                                                        
+                            <div class="space-y-4">
+                                <a href="https://www.linkedin.com/in/natã-de-oliveira-araujo-34566b368" target="_blank" class="flex items-center bg-dark-600 hover:bg-dark-500 rounded-lg p-4 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                                        <i class="fab fa-linkedin-in text-white"></i>
+                                    </div>
+                                    <span class="text-light-200">LinkedIn</span>
+                                </a>
+                                                                
+                                <div class="flex items-center bg-dark-600 rounded-lg p-4 opacity-50 cursor-not-allowed">
+                                    <div class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center mr-4">
+                                        <i class="fab fa-twitter text-white"></i>
+                                    </div>
+                                    <span class="text-light-200">Twitter</span>
+                                </div>
+                                                                
+                                <div class="flex items-center bg-dark-600 rounded-lg p-4 opacity-50 cursor-not-allowed">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-4">
+                                        <i class="fab fa-instagram text-white"></i>
+                                    </div>
+                                    <span class="text-light-200">Instagram</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-dark-900 py-8 border-t border-dark-700">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center">
+                <div class="mb-6">
+                    <img 
+                        src="ChatGPT Image 27_05_2025, 10_47_52.jpg" 
+                        alt="Logo Natã Araújo Estágio Jurídico" 
+                        class="h-16"
+                        onerror="this.onerror=null;this.src='https://placehold.co/100x64/1A1A1A/E0E0E0?text=N';"
+                    />
+                </div>
+                <p class="text-light-400 text-center mb-4">
+                    "O Direito é a arte do bom e do justo." - Celso
+                </p>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#hero" class="text-light-400 hover:text-white transition-colors">
+                        <i class="fas fa-home text-xl"></i>
+                    </a>
+                    <a href="#contato" class="text-light-400 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/natã-de-oliveira-araujo-34566b368" target="_blank" class="text-light-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+                <p class="text-light-500 text-sm">
+                    &copy; <span id="currentYear"></span> Natã de Oliveira Araújo. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+                
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+                
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+                
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+                
+        // Update year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+                
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+                
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.8) && (rect.bottom >= 0);
+                                
+                if (isVisible && !bar.hasAttribute('data-animated')) {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                        bar.setAttribute('data-animated', 'true');
+                    }, 100);
+                }
+            });
+        };
+                
+        // Initial check and on scroll
+        animateSkillBars();
+        window.addEventListener('scroll', animateSkillBars);
+                
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+                
+        // Add active class to nav items based on scroll position
+        const sections = document.querySelectorAll('main section');
+        const navLinks = document.querySelectorAll('header nav a, #mobileMenu a');
+                
+        const updateActiveNavLink = () => {
+            let currentActiveSectionId = '';
+                        
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                                
+                if (window.pageYOffset >= sectionTop - 150 && 
+                    window.pageYOffset < sectionTop + sectionHeight - 150) {
+                    currentActiveSectionId = section.getAttribute('id');
+                }
+            });
+                        
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                                
+                if (href === `#${currentActiveSectionId}`) {
+                    link.classList.add('text-primary', 'font-semibold');
+                    link.classList.remove('text-light-200', 'text-white');
+                } else {
+                    link.classList.remove('text-primary', 'font-semibold');
+                    if (link.classList.contains('nav-link')) {
+                        link.classList.add('text-light-200');
+                    } else {
+                        link.classList.add('text-white');
+                    }
+                }
+            });
+        };
+                
+        window.addEventListener('scroll', updateActiveNavLink);
+        window.addEventListener('load', updateActiveNavLink);
+        
+        // Add hover effects to all cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-lg');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-lg');
+            });
+        });
+    </script>
+</body>
+</html>
